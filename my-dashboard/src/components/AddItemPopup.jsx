@@ -4,7 +4,7 @@ const AddItemPopup = ({ handleClosePopup }) => {
   return (
     <div>
       <h2>Add New Item</h2>
-      <form onSubmit={handleSubmit()}>
+     
         <div className="">
           <label htmlFor="name">Name:</label>
           <input type="text" />
@@ -28,7 +28,7 @@ const AddItemPopup = ({ handleClosePopup }) => {
           <button onClick={handleClosePopup}>Cancel</button>
           <button>Add Item</button>
         </div>
-      </form>
+    
     </div>
   );
 };
