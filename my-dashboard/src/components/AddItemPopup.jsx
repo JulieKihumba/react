@@ -3,20 +3,21 @@ import React from "react";
 const AddItemPopup = ({ handleClosePopup }) => {
   return (
     <div>
-        <h2>Add New Item</h2>
+      <h2>Add New Item</h2>
+      <form onSubmit={handleSubmit()}>
         <div className="">
-          <label htmlFor="">Name:</label>
+          <label htmlFor="name">Name:</label>
           <input type="text" />
         </div>
-        <div className="">
+        <div className="email">
           <label htmlFor="">Email:</label>
           <input type="text" />
         </div>
-        <div className="">
+        <div className="role">
           <label htmlFor="">Role:</label>
           <input type="text" />
         </div>
-        <div className="">
+        <div className="status">
           <label htmlFor="">Status:</label>
           <select name="" id="">
             <option value="active">Active</option>
@@ -27,6 +28,7 @@ const AddItemPopup = ({ handleClosePopup }) => {
           <button onClick={handleClosePopup}>Cancel</button>
           <button>Add Item</button>
         </div>
+      </form>
     </div>
   );
 };
