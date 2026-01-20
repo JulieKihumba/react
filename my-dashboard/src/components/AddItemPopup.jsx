@@ -1,0 +1,34 @@
+import React from "react";
+
+const AddItemPopup = ({ handleClosePopup }) => {
+  return (
+    <div>
+        <h2>Add New Item</h2>
+        <div className="">
+          <label htmlFor="">Name:</label>
+          <input type="text" />
+        </div>
+        <div className="">
+          <label htmlFor="">Email:</label>
+          <input type="text" />
+        </div>
+        <div className="">
+          <label htmlFor="">Role:</label>
+          <input type="text" />
+        </div>
+        <div className="">
+          <label htmlFor="">Status:</label>
+          <select name="" id="">
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+        <div className="">
+          <button onClick={handleClosePopup}>Cancel</button>
+          <button>Add Item</button>
+        </div>
+    </div>
+  );
+};
+
+export default AddItemPopup;
