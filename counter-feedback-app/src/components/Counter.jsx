@@ -14,12 +14,14 @@ const Counter = () => {
   }
   return (
     <div>
-      <h1>{count}</h1>
+      <h1 className="text-red-600">CURRENT COUNTER</h1>
+      <h2>{count}</h2>
       <div className="">
         <button onClick={handleAdd}>INCREASE</button>
         <button onClick={handleMinus}>DECREASE</button>
         <button onClick={handleReset}>RESET</button>
       </div>
+      
     </div>
   );
 };
