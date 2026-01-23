@@ -6,12 +6,13 @@ const AddItemPopup = ({ handleClosePopup, handleAddItem }) => {
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("Active");
 
-  function handleSubmit(e) {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = { name, email, role, status };
     handleAddItem(newItem);
     handleClosePopup();
-  }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
