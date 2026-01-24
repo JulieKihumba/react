@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import AddItemPopup from "./components/AddItemPopup";
 import { RiDeleteBin6Line, RiEditLine } from "react-icons/ri";
+import userService from "./services/users";
 
 const App = () => {
   const [addItemPopup, setAddItemPopup] = React.useState(false);
-  const [newItem, setNewItem] = useState([]);
-  function handleAddItem(item) {
-    setNewItem((prevItems) => [...prevItems, item]);
-  }
+  const [users, setUsers] = useState([]);
+
   function handleOpenPopup() {
     setAddItemPopup(true);
   }
@@ -16,6 +15,20 @@ const App = () => {
     console.log("Close Popup");
     setAddItemPopup(false);
   }
+
+  // CREATE/ADD A USER
+  const handleAddUser = (user) => {
+    userService.create(user)
+    .then(response=>{setUsers((prevUser) => [...prevUser, response.data])})
+    // ;
+  };
+  // GET ALL USERS
+  useEffect(() => {
+    userService.getAll().then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+ 
   return (
     <div className="text-center">
       <Header handleOpenPopup={handleOpenPopup} />
@@ -43,20 +56,20 @@ const App = () => {
             </thead>
 
             <tbody className="divide-y divide-gray-200 bg-white">
-              {newItem.map((item, index) => (
+              {users.map((user, index) => (
                 <tr key={index}>
                   <td className="px-6 py-4 text-sm text-gray-800 text-left">
-                    {item.name}
+                    {user.name}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600 text-left">
-                    {item.email}
+                    {user.email}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-600 text-left">
-                    {item.role}
+                    {user.role}
                   </td>
                   <td className="px-6 py-4 text-sm text-left">
                     <span className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700">
-                      {item.status}
+                      {user.status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm text-left">
@@ -77,7 +90,7 @@ const App = () => {
       {addItemPopup && (
         <AddItemPopup
           handleClosePopup={handleClosePopup}
-          handleAddItem={handleAddItem}
+          handleAddUser={handleAddUser}
         />
       )}
     </div>

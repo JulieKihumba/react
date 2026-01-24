@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-const AddItemPopup = ({ handleClosePopup, handleAddItem }) => {
+const AddItemPopup = ({ handleClosePopup, handleAddUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("Active");
 
-
+ // CREATE/ADD USER
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newItem = { name, email, role, status };
-    handleAddItem(newItem);
+    const newUser = { name, email, role, status };
+    handleAddUser(newUser);
     handleClosePopup();
   };
 
